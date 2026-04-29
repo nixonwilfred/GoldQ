@@ -1,0 +1,22 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+body {
+  background: #0a0a0a;
+  color: #f4f4f5;
+  font-family: "Inter", sans-serif;
+}
+
+/* TradingView ticker tape: force black background + light text */
+#tv-ticker-tape-container,
+#tv-ticker-tape-container > div,
+#tv-ticker-tape-container iframe {
+  background: #000000 !important;
+}
