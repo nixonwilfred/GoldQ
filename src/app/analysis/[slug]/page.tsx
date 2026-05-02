@@ -1,5 +1,4 @@
 export const runtime = "nodejs";
-export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 import type { Metadata } from "next";
 import { MDXRemote } from "next-mdx-remote/rsc";
