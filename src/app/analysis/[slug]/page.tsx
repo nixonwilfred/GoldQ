@@ -1,6 +1,5 @@
 export const runtime = "nodejs";
 import type { Metadata } from "next";
-import { MDXRemote } from "next-mdx-remote/rsc";
 import { notFound } from "next/navigation";
 import { getAllPostSlugs, getPostBySlug } from "@/lib/posts";
 
@@ -31,11 +30,25 @@ export async function generateMetadata({ params }: PostPageProps): Promise<Metad
   };
 }
 
+function renderMarkdown(content: string): string {
+  return content
+    .replace(/^## (.+)$/gm, '<h2 class="text-2xl font-semibold text-white mt-8 mb-4">$1</h2>')
+    .replace(/^### (.+)$/gm, '<h3 class="text-xl font-semibold text-white mt-6 mb-3">$1</h3>')
+    .replace(/\*\*(.+?)\*\*/g, '<strong class="text-gold">$1</strong>')
+    .replace(/\*(.+?)\*/g, '<em>$1</em>')
+    .replace(/^- (.+)$/gm, '<li class="ml-4 text-zinc-300">$1</li>')
+    .replace(/(<li.*<\/li>\n?)+/g, '<ul class="list-disc my-3">$&</ul>')
+    .replace(/^(?!<[h|u|l])(.+)$/gm, '<p class="text-zinc-300 leading-7 my-3">$1</p>')
+    .replace(/<p class="text-zinc-300 leading-7 my-3"><\/p>/g, '');
+}
+
 export default async function AnalysisPostPage({ params }: PostPageProps) {
   const { slug } = await params;
   const post = await getPostBySlug(slug);
 
   if (!post) notFound();
+
+  const htmlContent = renderMarkdown(post.content);
 
   return (
     <article className="mx-auto max-w-4xl px-4 py-16 sm:px-6 lg:px-8">
@@ -47,25 +60,22 @@ export default async function AnalysisPostPage({ params }: PostPageProps) {
 
       <div className="mt-8 rounded-xl border border-white/10 bg-panel p-6">
         <p className="text-sm uppercase tracking-[0.2em] text-gold">Directional Bias</p>
-        <p
-          className={`mt-2 text-lg font-semibold ${
-            post.bias === "Bullish" ? "text-emerald-400" : "text-rose-400"
-          }`}
-        >
+        <p className={`mt-2 text-lg font-semibold ${post.bias === "Bullish" ? "text-emerald-400" : "text-rose-400"}`}>
           {post.bias}
         </p>
         <div className="mt-5 grid gap-3 sm:grid-cols-3">
           {post.priceZones.map((zone) => (
-            <div key={zone} className="rounded-md border border-white/10 bg-black/30 p-3 text-sm">
+            <div key={zone} className="rounded-md border border-white/10 bg-black/30 p-3 text-sm text-zinc-300">
               {zone}
             </div>
           ))}
         </div>
       </div>
 
-      <div className="prose prose-invert prose-headings:text-white prose-strong:text-gold mt-8 max-w-none prose-p:text-zinc-300">
-        <MDXRemote source={post.content} />
-      </div>
+      <div
+        className="mt-8"
+        dangerouslySetInnerHTML={{ __html: htmlContent }}
+      />
     </article>
   );
 }
