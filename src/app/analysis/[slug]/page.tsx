@@ -1,3 +1,4 @@
+export const runtime = "nodejs";
 import type { Metadata } from "next";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { notFound } from "next/navigation";
