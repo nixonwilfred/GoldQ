@@ -23,16 +23,21 @@ export default function CommunityPage() {
 
       <div className="mt-10 rounded-2xl border border-gold/30 bg-panel p-8 shadow-[0_0_60px_rgba(245,166,35,0.08)]">
         <p className="text-sm uppercase tracking-[0.2em] text-zinc-400">Monthly Membership</p>
-        <p className="mt-2 text-5xl font-bold text-gold">$97</p>
+        <p className="mt-2 text-5xl font-bold text-gold">$50</p>
         <p className="mt-1 text-zinc-400">per month</p>
         <ul className="mt-7 space-y-3 text-zinc-200">
           {features.map((feature) => (
             <li key={feature}>• {feature}</li>
           ))}
         </ul>
-        <button className="mt-8 w-full rounded-md bg-gold px-6 py-3 font-semibold text-black transition hover:bg-amber sm:w-auto">
+        <a
+          href="https://discord.gg/D6Q7G2W9Y"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-8 inline-block w-full rounded-md bg-gold px-6 py-3 text-center font-semibold text-black transition hover:bg-amber sm:w-auto"
+        >
           Join GoldQ Discord
-        </button>
+        </a>
       </div>
     </section>
   );
