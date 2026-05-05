@@ -31,7 +31,7 @@ export default function CommunityPage() {
           ))}
         </ul>
         <a
-          href="https://discord.gg/D6Q7G2W9Y"
+          href="https://discord.gg/trGGwwS3fm"
           target="_blank"
           rel="noopener noreferrer"
           className="mt-8 inline-block w-full rounded-md bg-gold px-6 py-3 text-center font-semibold text-black transition hover:bg-amber sm:w-auto"
