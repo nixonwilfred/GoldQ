@@ -60,13 +60,17 @@ export async function POST(request: Request) {
             Keep an eye on your inbox — your first daily levels will arrive soon. In the meantime, feel free to check out the analysis on the site.
           </p>
 
-          <!-- CTA Button -->
-          <div style="text-align: center; margin-bottom: 32px;">
-            <a href="https://goldq.vercel.app/analysis" style="background: #f5c518; color: #000; padding: 14px 28px; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 15px;">
-              View Latest Analysis →
-            </a>
-          </div>
-
+         <!-- CTA Buttons -->
+<div style="text-align: center; margin-bottom: 16px;">
+  <a href="https://www.goldq.trade/analysis" style="background: #f5c518; color: #000; padding: 14px 28px; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 15px;">
+    View Latest Analysis →
+  </a>
+</div>
+<div style="text-align: center; margin-bottom: 32px;">
+  <a href="https://discord.gg/trGGwwS3fm" style="background: #5865F2; color: #fff; padding: 14px 28px; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 15px;">
+    Join Discord Community →
+  </a>
+</div>
           <!-- Footer -->
           <hr style="border: none; border-top: 1px solid #222; margin: 24px 0;" />
           <p style="color: #555; font-size: 12px; text-align: center; margin: 0;">
